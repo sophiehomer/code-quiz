@@ -5,15 +5,16 @@
 #start-card{
 margin-top: 200px;
 text-align: center;
+align-items: center;
 font-size: 20px;
 
 }
 
 #start{
-    font-size: 16px;
+font-size: 16px;
 background-color: darkblue;
 color: white;
 border-radius: 25px;
-padding: 10px 20px;
-
+width: 100px;
 }
+
