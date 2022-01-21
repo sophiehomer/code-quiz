@@ -45,7 +45,7 @@ border:none
     border: none;
 }
 
-.answersList {
+#answer-buttons {
     margin-top: 40px;
 }
 

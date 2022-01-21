@@ -1,4 +1,5 @@
 var startBtn = document.querySelector("#start")
+var nextButton = document.querySelector("#next-button")
 var startCard = document.querySelector("#start-card")
 var questionCard = document.querySelector("#question-card")
 var questionElement = document.querySelector("#question")
@@ -59,23 +60,29 @@ setNextQuestion()
 }
 
 function setNextQuestion() {
+  resetState()
  showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
 function showQuestion(question) {
 questionElement.innerText = question.question
 question.answers.forEach(answer => {
-  const button = document.createElement("button")
+  var button = document.createElement("button")
   button.innerText = answer.text
   button.classList.add("btn")
   if (answer.correct) {
     button.dataset.correct = answer.correct
   }
   button.addEventListener("click", selectAnswer)
-  // answerButtonsElement.appendChild(button)
+  answerButtonsElement.appendChild(button)
 })
 }
 
+function resetState() {
+  while (answerButtonsElement.firstChild) {
+    answerButtonsElement.removeChild(answerButtonsElement.firstChild)
+  }
+}
 
 
 function selectAnswer(){
