@@ -6,8 +6,7 @@ var questionElement = document.querySelector("#question")
 var answerButtonsElement = document.querySelector("#answer-buttons")
 var time = 100
 var score= 0
-var element = ""
-let shuffledQuestions, currentQuestionIndex
+let currentQuestionIndex
 
 var questions = [
     {
@@ -17,44 +16,56 @@ var questions = [
         { text: "Add a comma between the class names", correct: false },
         { text:"Add a space between the class names", correct: true },
         { text: "Add a class-2 attibute", correct: false },
-      ]}]
+      ]},
 
-      console.log(questions)
-    // {
-    //   question: "On a technical level, what's the difference between a <section> element and a <div>?",
-    //   answers: ["1. There is no difference", "2. A <div> element takes up more width on the page", "3. A <section> element has bold text by default", "4. A <section> element takes up more height on the page"],
-    //   correct: "There is no difference"
-    // },
-    // {
-    //   question: "How do you leave hidden comments in HTML code?",
-    //   answers: ["1. /* */", "2. <!-- -->", "3. {{ }}", "4. //"],
-    //   correct: "<!-- -->"
-    // },
-    // {
-    //   question: "What is the command to push code to GitHub?",
-    //   answers: ["1. git push origin main", "2. git config", "3. git brach", "4. git clone"],
-    //   correct: "git push origin main"
-    // },
-    // {
-    //   question: "What is the purpose of the alt attribute for images?",
-    //   answers: ["1. To make the image load faster", "2. To make it easier to style the image with CSS", "3. To prevent search engines from indexing the image", "4. To provide context for the image"],
-    //   correct: "To provide context for the image"
-    // }
-  // ];
+    {
+      question: "On a technical level, what's the difference between a <section> element and a <div>?",
+      answers: [
+        { text: "1. There is no difference", correct: true },
+        { text:"2. A <div> element takes up more width on the page", correct: false },
+        { text:"3. A <section> element has bold text by default", correct: false },
+        { text:"4. A <section> element takes up more height on the page", correct: false }
+      ]},
+      
+    {
+      question: "How do you leave hidden comments in HTML code?",
+      answers: [
+        { text:  "1. /* */", correct: false },
+        { text:  "2. <!-- -->", correct: true },
+        { text: "3. {{ }}", correct: false },
+        { text:  "4. //", correct: false }
+      ]},
+
+    {
+      question: "What is the command to push code to GitHub?",
+      answers: [
+        { text: "1. git push origin main", correct: true },
+        { text:"2. git config", correct: false },
+        { text: "3. git brach", correct: false },
+        { text:"4. git clone", correct: false }
+      ]},
+    {
+      question: "What is the purpose of the alt attribute for images?",
+      answers: [
+        { text: "1. To make the image load faster", correct: false },
+        { text:"2. To make it easier to style the image with CSS", correct: false },
+        { text:"3. To prevent search engines from indexing the image", correct: false },
+        { text:"4. To provide context for the image", correct: true }
+      ]}];
 
 // Add event listener to start button
 startBtn.addEventListener("click", startQuiz);
-
 function startQuiz(){
+currentQuestionIndex = 0
 startCard.style.display = "none"
 questionCard.style.display = "block"
-shuffledQuestions = questions.sort(() => Math.random() - .5)
-currentQuestionIndex = 0
+// shuffledQuestions = questions.sort(() => Math.random() - .5)
+
+
 
 questions.forEach((element) => {
 console.log(element.question)
 console.log(element.answers)
-// console.log(element.correct)
 
 });
   setNextQuestion()
@@ -62,7 +73,7 @@ console.log(element.answers)
 
 function setNextQuestion() {
   resetState()
-  showQuestion(shuffledQuestions[currentQuestionIndex])
+  showQuestion(questions[currentQuestionIndex])
 }
 
 function showQuestion(question) {
@@ -74,8 +85,11 @@ function showQuestion(question) {
   if (answer.correct) {
     button.dataset.correct = answer.correct
   }
-  button.addEventListener("click", selectAnswer)
+  button.onclick = selectAnswer
   answerButtonsElement.appendChild(button)
+  console.dir(button)
+
+  
 })
 }
 
@@ -86,46 +100,51 @@ function resetState() {
 }
 
 
-function selectAnswer(e){ 
-  var selectedButton = e.target
-  var correct = selectedButton.dataset.correct
-  setStatusClass(document.body, correct)
-  Array.from(answerButtonsElement.children).forEach(button => {
-  setStatusClass(button, button.dataset.correct)
-})
+function selectAnswer(event){ 
+ var selectedButton = event.target
+ 
+ if (selectedButton.dataset.correct) { console.log("correct")
+ var correct = document.createElement("p")
+ correct.textContent = "correct"
+ answerButtonsElement.appendChild(correct)
+
+ currentQuestionIndex++ 
+ console.log(currentQuestionIndex)
+ setNextQuestion()
+}
+else {
+ var correct = document.createElement("p")
+ correct.textContent = "wrong"
+ answerButtonsElement.appendChild(correct)
+//  console.log("wrong")
+}
 }
 
-function setStatusClass(element, correct) {
-  clearStatusClass(element)
-  if (correct) {
-    element.classList.add("correct")
-  } else {
-    element.classList.add("wrong")
-  }
-}
 
 
-function clearStatusClass() {
-  element.classList.remove("correct")
-  element.classList.remove("wrong")
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function clearStatusClass() {
+//   element.classList.remove("correct")
+//   element.classList.remove("wrong")
+// }
 
 // function timer(){
 //     var timeClock = setInterval(() => {
 //         time = time - 1
 //     }, 1000 );
 // }
-
-
-
-
-
-
-
-// function sum(a, b){
-//     // console.log(a+b)
-// return a + b
-// }
-
-// sum(2, 3)
-// // console.log(sum(2, 3))
