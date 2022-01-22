@@ -6,6 +6,7 @@ var questionElement = document.querySelector("#question")
 var answerButtonsElement = document.querySelector("#answer-buttons")
 var time = 100
 var score= 0
+var element = ""
 let shuffledQuestions, currentQuestionIndex
 
 var questions = [
@@ -50,23 +51,23 @@ questionCard.style.display = "block"
 shuffledQuestions = questions.sort(() => Math.random() - .5)
 currentQuestionIndex = 0
 
-// questions.forEach((element) => {
-// console.log(element.question)
-// console.log(element.answers)
-// // console.log(element.correct)
+questions.forEach((element) => {
+console.log(element.question)
+console.log(element.answers)
+// console.log(element.correct)
 
-// });
-setNextQuestion()
+});
+  setNextQuestion()
 }
 
 function setNextQuestion() {
   resetState()
- showQuestion(shuffledQuestions[currentQuestionIndex])
+  showQuestion(shuffledQuestions[currentQuestionIndex])
 }
 
 function showQuestion(question) {
-questionElement.innerText = question.question
-question.answers.forEach(answer => {
+  questionElement.innerText = question.question
+  question.answers.forEach(answer => {
   var button = document.createElement("button")
   button.innerText = answer.text
   button.classList.add("btn")
@@ -87,9 +88,9 @@ function resetState() {
 
 function selectAnswer(e){ 
   var selectedButton = e.target
-var correct = selectedButton.dataset.correct
-setStatusClass(document.body, correct)
-Array.from(answerButtonsElement.children).forEach(button => {
+  var correct = selectedButton.dataset.correct
+  setStatusClass(document.body, correct)
+  Array.from(answerButtonsElement.children).forEach(button => {
   setStatusClass(button, button.dataset.correct)
 })
 }
@@ -103,16 +104,18 @@ function setStatusClass(element, correct) {
   }
 }
 
+
 function clearStatusClass() {
   element.classList.remove("correct")
   element.classList.remove("wrong")
 }
 
-function timer(){
-    var timeClock = setInterval(() => {
-        time = time - 1
-    }, 1000 );
-}
+// function timer(){
+//     var timeClock = setInterval(() => {
+//         time = time - 1
+//     }, 1000 );
+// }
+
 
 
 
