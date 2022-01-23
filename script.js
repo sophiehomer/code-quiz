@@ -1,5 +1,5 @@
 var startBtn = document.querySelector("#start")
-var nextButton = document.querySelector("#next-button")
+var backBtn = document.querySelector("#back-btn")
 var startCard = document.querySelector("#start-card")
 var questionCard = document.querySelector("#question-card")
 var questionElement = document.querySelector("#question")
@@ -12,16 +12,16 @@ var questions = [
     {
       question: "How can you add more than one class to an HTML element?",
       answers: [
-        { text: "Add a second class attribute", correct: false }, 
-        { text: "Add a comma between the class names", correct: false },
-        { text:"Add a space between the class names", correct: true },
-        { text: "Add a class-2 attibute", correct: false },
+        { text:"1. Add a second class attribute", correct: false }, 
+        { text:"2. Add a comma between the class names", correct: false },
+        { text:"3. Add a space between the class names", correct: true },
+        { text:"4. Add a class-2 attibute", correct: false },
       ]},
 
     {
       question: "On a technical level, what's the difference between a <section> element and a <div>?",
       answers: [
-        { text: "1. There is no difference", correct: true },
+        { text:"1. There is no difference", correct: true },
         { text:"2. A <div> element takes up more width on the page", correct: false },
         { text:"3. A <section> element has bold text by default", correct: false },
         { text:"4. A <section> element takes up more height on the page", correct: false }
@@ -30,24 +30,24 @@ var questions = [
     {
       question: "How do you leave hidden comments in HTML code?",
       answers: [
-        { text:  "1. /* */", correct: false },
-        { text:  "2. <!-- -->", correct: true },
-        { text: "3. {{ }}", correct: false },
-        { text:  "4. //", correct: false }
+        { text:"1. /* */", correct: false },
+        { text:"2. <!-- -->", correct: true },
+        { text:"3. {{ }}", correct: false },
+        { text:"4. //", correct: false }
       ]},
 
     {
       question: "What is the command to push code to GitHub?",
       answers: [
-        { text: "1. git push origin main", correct: true },
+        { text:"1. git push origin main", correct: true },
         { text:"2. git config", correct: false },
-        { text: "3. git brach", correct: false },
+        { text:"3. git brach", correct: false },
         { text:"4. git clone", correct: false }
       ]},
     {
       question: "What is the purpose of the alt attribute for images?",
       answers: [
-        { text: "1. To make the image load faster", correct: false },
+        { text:"1. To make the image load faster", correct: false },
         { text:"2. To make it easier to style the image with CSS", correct: false },
         { text:"3. To prevent search engines from indexing the image", correct: false },
         { text:"4. To provide context for the image", correct: true }
@@ -55,18 +55,14 @@ var questions = [
 
 // Add event listener to start button
 startBtn.addEventListener("click", startQuiz);
+// Start quiz
 function startQuiz(){
-currentQuestionIndex = 0
-startCard.style.display = "none"
-questionCard.style.display = "block"
-// shuffledQuestions = questions.sort(() => Math.random() - .5)
-
-
-
-questions.forEach((element) => {
-console.log(element.question)
-console.log(element.answers)
-
+ currentQuestionIndex = 0
+ startCard.style.display = "none"
+ questionCard.style.display = "block"
+ questions.forEach((element) => {
+ console.log(element.question)
+ console.log(element.answers)
 });
   setNextQuestion()
 }
@@ -88,8 +84,6 @@ function showQuestion(question) {
   button.onclick = selectAnswer
   answerButtonsElement.appendChild(button)
   console.dir(button)
-
-  
 })
 }
 
@@ -97,8 +91,8 @@ function resetState() {
   while (answerButtonsElement.firstChild) {
     answerButtonsElement.removeChild(answerButtonsElement.firstChild)
   }
+  
 }
-
 
 function selectAnswer(event){ 
  var selectedButton = event.target
@@ -112,13 +106,27 @@ function selectAnswer(event){
  console.log(currentQuestionIndex)
  setNextQuestion()
 }
+
 else {
  var correct = document.createElement("p")
- correct.textContent = "wrong"
+ correct.textContent = "Wrong!"
  answerButtonsElement.appendChild(correct)
-//  console.log("wrong")
 }
 }
+
+
+
+
+
+
+
+
+// backBtn.addEventListener("click", startQuiz); // change to start card
+// // Takes user to homepage
+// function startQuiz(){ // change to start card
+
+// }
+
 
 
 

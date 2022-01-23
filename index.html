@@ -10,14 +10,16 @@
 </head>
 
 <body>
+
+<!-- Start Card-->
     <div class="card"  id="start-card">
     <h1>Coding Quiz Challenge</h1>
     <p>Try to answer the following code-related questions within the time limit.<br> Keep in mind that incorrect answers will penalize your score/time <br>by ten seconds!</p>
     <button id="start">Start Quiz</button>
 </div>
 
+<!-- Question Card-->
 <div class="card" id="question-card">
-    <h1 id="question-title">Coding Quiz Challenge</h1>
     <h2 id="question">question</h2>
     <ul id="answer-buttons">
         <li id="button-list">
@@ -27,9 +29,30 @@
             <button class="btn">Answer 4</button>
         </li>
     </ul>
-
-    
 </div>
+
+<!-- Score Card -->
+<div id="score-card">
+<h3 id="result-text">All done!</h3>
+<form>
+    <label for="initials">Enter initials:</label>
+    <input type="text"/>
+    <button class="submit-btn">Submit</button>
+</form>
+</div>
+
+<!-- High Score Card -->
+<div id="high-score-card">
+    <h4 id="high-score-text">High scores</h4>
+        <button id="back-btn">Go back</button>
+        <button id="score-btn">Clear high scores</button>
+   
+
+</div>
+
+
+
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 <script src="script.js"></script>
