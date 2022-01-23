@@ -4,6 +4,7 @@ var startCard = document.querySelector("#start-card")
 var questionCard = document.querySelector("#question-card")
 var questionElement = document.querySelector("#question")
 var answerButtonsElement = document.querySelector("#answer-buttons")
+var scoreCard = document.querySelector("#score-card")
 var time = 100
 var score= 0
 let currentQuestionIndex
@@ -68,7 +69,14 @@ function startQuiz(){
 }
 
 function setNextQuestion() {
+  console.log(currentQuestionIndex, "hello")
   resetState()
+  if (currentQuestionIndex >= questions.length){
+  // console.log("hello world")
+  endQuiz()
+  
+  }
+  else resetState()
   showQuestion(questions[currentQuestionIndex])
 }
 
@@ -85,6 +93,7 @@ function showQuestion(question) {
   answerButtonsElement.appendChild(button)
   console.dir(button)
 })
+
 }
 
 function resetState() {
@@ -111,13 +120,32 @@ else {
  var correct = document.createElement("p")
  correct.textContent = "Wrong!"
  answerButtonsElement.appendChild(correct)
+
 }
 }
 
+endQuiz = function(event) {
+  questionCard.style.display = "none"
+  scoreCard.style.display = "block"
+ 
+
+  
+
+  // submitBtn.addEventListener("click", startQuiz);
+ 
+}
 
 
 
 
+
+
+// crate array for high scores
+// var highscores = [];
+
+// var highScoresHandler = function(event){
+
+// }
 
 
 
