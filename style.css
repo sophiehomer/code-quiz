@@ -72,7 +72,7 @@ border-radius: 5px
     border: none
 }
 
-#score-card {
+#final-card {
     padding: 100px;
     display: none;
 }
@@ -113,6 +113,6 @@ border-radius: 5px
     border: none
 }
 
-#high-score-card {
+#score-card {
     display: none;
 }

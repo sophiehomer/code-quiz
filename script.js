@@ -4,7 +4,9 @@ var startCard = document.querySelector("#start-card")
 var questionCard = document.querySelector("#question-card")
 var questionElement = document.querySelector("#question")
 var answerButtonsElement = document.querySelector("#answer-buttons")
+var finalCard = document.querySelector("#final-card")
 var scoreCard = document.querySelector("#score-card")
+var submitBtn=document.querySelector("#submit-btn")
 var time = 100
 var score= 0
 let currentQuestionIndex
@@ -124,18 +126,31 @@ else {
 }
 }
 
-endQuiz = function(event) {
+function endQuiz() {
   questionCard.style.display = "none"
-  scoreCard.style.display = "block"
- 
-
-  
-
-  // submitBtn.addEventListener("click", startQuiz);
- 
+  finalCard.style.display = "block"
+  submitBtn.addEventListener("click", addInitials);
+  addInitials()
 }
 
+function addInitials(){
+  startCard.style.display = "none"
+  finalCard.style.display = "block"
+  scoreCard.style.display = "none"
 
+ var initialsDiv = document.createElement("div");
+ initialsDiv.classList.add("initials")
+
+ var addUserInitials = document.createElement("li");
+ addUserInitials.innerText = "hey";
+ addUserInitials.classList.add("initials-item")
+
+ initialsDiv.appendChild(addUserInitials);
+ document.body.append(initialsDiv)
+ 
+ 
+ 
+}
 
 
 
