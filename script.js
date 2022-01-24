@@ -6,7 +6,7 @@ var questionElement = document.querySelector("#question")
 var answerButtonsElement = document.querySelector("#answer-buttons")
 var finalCard = document.querySelector("#final-card")
 var scoreCard = document.querySelector("#score-card")
-var submitBtn=document.querySelector("#submit-btn")
+var submitBtn=document.querySelector(".submit-btn")
 var time = 100
 var score= 0
 let currentQuestionIndex
@@ -71,15 +71,16 @@ function startQuiz(){
 }
 
 function setNextQuestion() {
-  console.log(currentQuestionIndex, "hello")
-  resetState()
+  // console.log(currentQuestionIndex, "hello")
+
   if (currentQuestionIndex >= questions.length){
   // console.log("hello world")
   endQuiz()
   
   }
-  else resetState()
-  showQuestion(questions[currentQuestionIndex])
+  else {
+   resetState()
+   showQuestion(questions[currentQuestionIndex])}
 }
 
 function showQuestion(question) {
@@ -121,22 +122,29 @@ function selectAnswer(event){
 else {
  var correct = document.createElement("p")
  correct.textContent = "Wrong!"
- answerButtonsElement.appendChild(correct)
+//  answerButtonsElement.appendChild(correct)
+ console.log(answerButtonsElement)
 
+console.log(answerButtonsElement.lastElementChild.textContent, "hello!!!")
+if (answerButtonsElement.lastElementChild.textContent !== "Wrong!") {
+  answerButtonsElement.textContent = "hello world"
+  answerButtonsElement.appendChild(correct)
+}}
 }
-}
+
+
 
 function endQuiz() {
   questionCard.style.display = "none"
   finalCard.style.display = "block"
   submitBtn.addEventListener("click", addInitials);
-  addInitials()
 }
 
-function addInitials(){
-  startCard.style.display = "none"
-  finalCard.style.display = "block"
-  scoreCard.style.display = "none"
+function addInitials(event){
+  event.preventDefault()
+  // startCard.style.display = "none"
+  // finalCard.style.display = "block"
+  // scoreCard.style.display = "none"
 
  var initialsDiv = document.createElement("div");
  initialsDiv.classList.add("initials")
@@ -144,6 +152,7 @@ function addInitials(){
  var addUserInitials = document.createElement("li");
  addUserInitials.innerText = "hey";
  addUserInitials.classList.add("initials-item")
+
 
  initialsDiv.appendChild(addUserInitials);
  document.body.append(initialsDiv)
