@@ -114,7 +114,7 @@ border-radius: 5px
     border-radius: 5px;
 }
 
-#score-btn:hover, #back-btn:hover {
+#score-btn:hover, #back:hover {
     background-color: violet;
     color: white;
     border: none

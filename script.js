@@ -9,8 +9,9 @@ var scoreCard = document.querySelector("#score-card")
 var submitBtn=document.querySelector(".submit-btn")
 var time = 100
 var score= 0
-let currentQuestionIndex
+let currentQuestionIndex 
 
+// Quiz Questions & Answers
 var questions = [
     {
       question: "How can you add more than one class to an HTML element?",
@@ -56,8 +57,23 @@ var questions = [
         { text:"4. To provide context for the image", correct: true }
       ]}];
 
-// Add event listener to start button
+// Event Listeners
 startBtn.addEventListener("click", startQuiz);
+backBtn.addEventListener("click", back);
+
+// Timer
+// var count = 75;
+// var interval = setInterval(function(){
+//   document.getElementById('count').innerHTML=count;
+//   count--;
+//   if (count === 0){
+//     clearInterval(interval);
+//     document.getElementById('count').innerHTML='Done';
+//     // or...
+//     alert("You're out of time!");
+//   }
+// }, 1000);
+
 // Start quiz
 function startQuiz(){
  currentQuestionIndex = 0
@@ -69,18 +85,20 @@ function startQuiz(){
 });
   setNextQuestion()
 }
-
+// Next Question
 function setNextQuestion() {
 
+// If all questions have been answered, end the quiz
   if (currentQuestionIndex >= questions.length){
   endQuiz()
   }
-
+// Otherwise keep displaying questions
   else {
    resetState()
    showQuestion(questions[currentQuestionIndex])}
 }
 
+// Display Question Card
 function showQuestion(question) {
   questionElement.innerText = question.question
   question.answers.forEach(answer => {
@@ -95,14 +113,17 @@ function showQuestion(question) {
   console.dir(button)
 })}
 
+// Reset Question Card
 function resetState() {
   while (answerButtonsElement.firstChild) {
     answerButtonsElement.removeChild(answerButtonsElement.firstChild)
   }}
 
+// Select Answers
 function selectAnswer(event){ 
  var selectedButton = event.target
- 
+
+// If User Selects The Correct Answer
  if (selectedButton.dataset.correct) { console.log("correct")
  var correct = document.createElement("p")
  correct.textContent = "correct"
@@ -113,24 +134,25 @@ function selectAnswer(event){
  setNextQuestion()
 }
 
+// If User Selects The Incorrect Answer
 else {
  var correct = document.createElement("p")
  correct.textContent = "Wrong!"
-//  answerButtonsElement.appendChild(correct)
  console.log(answerButtonsElement)
 
 console.log(answerButtonsElement.lastElementChild.textContent)
 if (answerButtonsElement.lastElementChild.textContent !== "Wrong!") {
-  // answerButtonsElement.textContent = "hello world"
   answerButtonsElement.appendChild(correct)
 }}}
 
+// End Quiz 
 function endQuiz() {
   questionCard.style.display = "none"
   finalCard.style.display = "block"
   submitBtn.addEventListener("click", addInitials);
 }
 
+// Add Initials
 function addInitials(event){
  event.preventDefault()
  localStorage.setItem("initials-item", "initialInput")
@@ -138,6 +160,7 @@ function addInitials(event){
  highScores()
 }
 
+// High Score Page 
 function highScores() {
  var initialsItemValue = localStorage.getItem("initialsInput")
  console.log(initialsItemValue)
@@ -158,13 +181,15 @@ function highScores() {
  document.body.append(initialsDiv)
 }
 
-backBtn.addEventListener("click", back)
-
+// Back Button
 function back () {
   console.log(back, "hihi") 
-    window.location.replace("http://www.w3schools.com")
+  window.location.replace("file:///Users/Sophie/Desktop/projects/challenges/code-quiz/index.html")
+   
   }
  
+// Clear High Scores Button
+
 
 
 
