@@ -1,5 +1,5 @@
 var startBtn = document.querySelector("#start")
-var backBtn = document.querySelector("#back-btn")
+var backBtn = document.querySelector("#back")
 var startCard = document.querySelector("#start-card")
 var questionCard = document.querySelector("#question-card")
 var questionElement = document.querySelector("#question")
@@ -134,16 +134,16 @@ function endQuiz() {
 function addInitials(event){
  event.preventDefault()
  localStorage.setItem("initials-item", "initialInput")
- window.location.replace("highscores.html");
+ window.location.replace("highscores.html"); 
  highScores()
 }
 
 function highScores() {
  var initialsItemValue = localStorage.getItem("initialsInput")
  console.log(initialsItemValue)
-
- var initialsDiv = document.createElement("div");
+ 
  console.log(initialsDiv, "hello world")
+ var initialsDiv = document.createElement("div");
  initialsDiv.classList.add("initials")
 
  var initialText= document.querySelector("#initialText")
@@ -158,7 +158,13 @@ function highScores() {
  document.body.append(initialsDiv)
 }
 
+backBtn.addEventListener("click", back)
 
+function back () {
+  console.log(back, "hihi") 
+    window.location.replace("http://www.w3schools.com")
+  }
+ 
 
 
 
