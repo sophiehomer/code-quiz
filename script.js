@@ -125,9 +125,9 @@ else {
 //  answerButtonsElement.appendChild(correct)
  console.log(answerButtonsElement)
 
-console.log(answerButtonsElement.lastElementChild.textContent, "hello!!!")
+console.log(answerButtonsElement.lastElementChild.textContent)
 if (answerButtonsElement.lastElementChild.textContent !== "Wrong!") {
-  answerButtonsElement.textContent = "hello world"
+  // answerButtonsElement.textContent = "hello world"
   answerButtonsElement.appendChild(correct)
 }}
 }
@@ -137,7 +137,7 @@ if (answerButtonsElement.lastElementChild.textContent !== "Wrong!") {
 function endQuiz() {
   questionCard.style.display = "none"
   finalCard.style.display = "block"
-  submitBtn.addEventListener("click", addInitials);
+  submitBtn.addEventListener("click", addInitials, scoreCard);
 }
 
 function addInitials(event){
@@ -147,6 +147,7 @@ function addInitials(event){
   // scoreCard.style.display = "none"
 
  var initialsDiv = document.createElement("div");
+ console.log(initialsDiv, "hello world")
  initialsDiv.classList.add("initials")
 
  var addUserInitials = document.createElement("li");
@@ -157,9 +158,14 @@ function addInitials(event){
  initialsDiv.appendChild(addUserInitials);
  document.body.append(initialsDiv)
  
- 
- 
 }
+
+function scoreCard(){
+finalCard.style.display = "none"
+scoreCard.style.display = "block"
+
+}
+
 
 
 
