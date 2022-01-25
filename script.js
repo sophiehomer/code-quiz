@@ -71,13 +71,11 @@ function startQuiz(){
 }
 
 function setNextQuestion() {
-  // console.log(currentQuestionIndex, "hello")
 
   if (currentQuestionIndex >= questions.length){
-  // console.log("hello world")
   endQuiz()
-  
   }
+
   else {
    resetState()
    showQuestion(questions[currentQuestionIndex])}
@@ -95,16 +93,12 @@ function showQuestion(question) {
   button.onclick = selectAnswer
   answerButtonsElement.appendChild(button)
   console.dir(button)
-})
-
-}
+})}
 
 function resetState() {
   while (answerButtonsElement.firstChild) {
     answerButtonsElement.removeChild(answerButtonsElement.firstChild)
-  }
-  
-}
+  }}
 
 function selectAnswer(event){ 
  var selectedButton = event.target
@@ -129,8 +123,7 @@ console.log(answerButtonsElement.lastElementChild.textContent)
 if (answerButtonsElement.lastElementChild.textContent !== "Wrong!") {
   // answerButtonsElement.textContent = "hello world"
   answerButtonsElement.appendChild(correct)
-}}
-}
+}}}
 
 function endQuiz() {
   questionCard.style.display = "none"
@@ -146,7 +139,7 @@ function addInitials(event){
 }
 
 function highScores() {
- var initialsItemValue = localStorage.getItem("initials-item")
+ var initialsItemValue = localStorage.getItem("initialsInput")
  console.log(initialsItemValue)
 
  var initialsDiv = document.createElement("div");
