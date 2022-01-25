@@ -140,27 +140,30 @@ function endQuiz() {
 
 function addInitials(event){
  event.preventDefault()
- localStorage.setItem("highscore1", "5")
+ localStorage.setItem("initials-item", "initialInput")
  window.location.replace("highscores.html");
  highScores()
 }
 
 function highScores() {
+ var initialsItemValue = localStorage.getItem("initials-item")
+ console.log(initialsItemValue)
+
  var initialsDiv = document.createElement("div");
  console.log(initialsDiv, "hello world")
  initialsDiv.classList.add("initials")
 
- var addUserInitials = document.createElement("li");
- addUserInitials.innerText = "";
- addUserInitials.classList.add("initials-item")
-
  var initialText= document.querySelector("#initialText")
  var initialInput = initialText.value
  console.log(initialInput)
+
+ var addUserInitials = document.createElement("li");
+ addUserInitials.innerText = initialInput
+ addUserInitials.classList.add("initials-item")
+
  initialsDiv.appendChild(addUserInitials);
  document.body.append(initialsDiv)
- }
-
+}
 
 
 
