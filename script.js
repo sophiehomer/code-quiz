@@ -132,8 +132,6 @@ if (answerButtonsElement.lastElementChild.textContent !== "Wrong!") {
 }}
 }
 
-
-
 function endQuiz() {
   questionCard.style.display = "none"
   finalCard.style.display = "block"
@@ -141,10 +139,14 @@ function endQuiz() {
 }
 
 function addInitials(event){
-  event.preventDefault()
+ event.preventDefault()
  localStorage.setItem("highscore1", "5")
-//  window.location.replace('highscores.html');
-  var initialsDiv = document.createElement("div");
+ window.location.replace("highscores.html");
+ highScores()
+}
+
+function highScores() {
+ var initialsDiv = document.createElement("div");
  console.log(initialsDiv, "hello world")
  initialsDiv.classList.add("initials")
 
@@ -152,13 +154,12 @@ function addInitials(event){
  addUserInitials.innerText = "";
  addUserInitials.classList.add("initials-item")
 
-var initialText= document.querySelector("#initialText")
-var initialInput = initialText.value
-console.log(initialInput)
+ var initialText= document.querySelector("#initialText")
+ var initialInput = initialText.value
+ console.log(initialInput)
  initialsDiv.appendChild(addUserInitials);
  document.body.append(initialsDiv)
-}
-
+ }
 
 
 
