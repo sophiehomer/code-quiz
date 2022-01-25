@@ -137,34 +137,33 @@ if (answerButtonsElement.lastElementChild.textContent !== "Wrong!") {
 function endQuiz() {
   questionCard.style.display = "none"
   finalCard.style.display = "block"
-  submitBtn.addEventListener("click", addInitials, scoreCard);
+  submitBtn.addEventListener("click", addInitials);
 }
 
 function addInitials(event){
   event.preventDefault()
-  // startCard.style.display = "none"
-  // finalCard.style.display = "block"
-  // scoreCard.style.display = "none"
-
- var initialsDiv = document.createElement("div");
+ localStorage.setItem("highscore1", "5")
+//  window.location.replace('highscores.html');
+  var initialsDiv = document.createElement("div");
  console.log(initialsDiv, "hello world")
  initialsDiv.classList.add("initials")
 
  var addUserInitials = document.createElement("li");
- addUserInitials.innerText = "hey";
+ addUserInitials.innerText = "";
  addUserInitials.classList.add("initials-item")
 
-
+var initialText= document.querySelector("#initialText")
+var initialInput = initialText.value
+console.log(initialInput)
  initialsDiv.appendChild(addUserInitials);
  document.body.append(initialsDiv)
- 
 }
 
-function scoreCard(){
-finalCard.style.display = "none"
-scoreCard.style.display = "block"
 
-}
+
+
+
+
 
 
 
