@@ -21,6 +21,12 @@ text-align: center;
 border: none;
 }
 
+header h2{
+    font-size: 20px;
+    display: inline-block;
+    margin-bottom: 60px;
+}
+
 #question {
     font-size: 20px;
 }

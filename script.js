@@ -7,6 +7,8 @@ var answerButtonsElement = document.querySelector("#answer-buttons")
 var finalCard = document.querySelector("#final-card")
 var scoreCard = document.querySelector("#score-card")
 var submitBtn=document.querySelector(".submit-btn")
+// var timeCount = document.querySelector(".timer .timer-sec")
+var timeCount = document.querySelector("#time")
 var time = 100
 var score= 0
 let currentQuestionIndex 
@@ -59,32 +61,45 @@ var questions = [
 
 // Event Listeners
 startBtn.addEventListener("click", startQuiz);
-backBtn.addEventListener("click", back);
-
-// Timer
-// var count = 75;
-// var interval = setInterval(function(){
-//   document.getElementById('count').innerHTML=count;
-//   count--;
-//   if (count === 0){
-//     clearInterval(interval);
-//     document.getElementById('count').innerHTML='Done';
-//     // or...
-//     alert("You're out of time!");
-//   }
-// }, 1000);
+// backBtn.addEventListener("click", back);
 
 // Start quiz
 function startQuiz(){
  currentQuestionIndex = 0
  startCard.style.display = "none"
  questionCard.style.display = "block"
- questions.forEach((element) => {
- console.log(element.question)
- console.log(element.answers)
-});
   setNextQuestion()
 }
+
+  // startBtn.onclick = (event)=>{
+  //   event.preventDefault()
+  //   // queCounter(1);
+  //   // startTimer(time);
+  //   console.log("hello")
+  //   startQuiz()
+  // }
+
+
+// startBtn.onclick = ()=>{
+//   // queCounter(1);
+//   startTimer(time);
+//   console.log("hello")
+//   startQuiz()
+// }
+
+// Timer
+// function startTimer(time){
+//   counter = setInterval(timer, 1000);
+//   timeCount.textContent = time;
+  
+// }
+
+// function timer(){
+  
+//   time--;
+// }
+
+console.log(startTimer, "hi")
 // Next Question
 function setNextQuestion() {
 
@@ -152,39 +167,46 @@ function endQuiz() {
   submitBtn.addEventListener("click", addInitials);
 }
 
+// submitBtn.onclick = () => {
+//   addInitials()
+//   console.log("sophia")
+// }
+
 // Add Initials
 function addInitials(event){
  event.preventDefault()
  localStorage.setItem("initials-item", "initialInput")
  window.location.replace("highscores.html"); 
- highScores()
+ console.log("hi")
+//  highScores()
 }
 
 // High Score Page 
 function highScores() {
- var initialsItemValue = localStorage.getItem("initialsInput")
- console.log(initialsItemValue)
+  console.log("hey")
+//  var initialsItemValue = localStorage.getItem("initialsInput")
  
- console.log(initialsDiv, "hello world")
- var initialsDiv = document.createElement("div");
- initialsDiv.classList.add("initials")
+//  var initialsDiv = document.createElement("div");
+//  initialsDiv.classList.add("initials")
 
- var initialText= document.querySelector("#initialText")
- var initialInput = initialText.value
- console.log(initialInput)
+//  var initialText= document.querySelector("#initialText")
+//  var initialInput = initialText.value
+//  console.log(initialInput)
 
- var addUserInitials = document.createElement("li");
- addUserInitials.innerText = initialInput
- addUserInitials.classList.add("initials-item")
+//  var addUserInitials = document.createElement("li");
+//  addUserInitials.innerText = initialInput
+//  addUserInitials.classList.add("initials-item")
 
+ var initialShow = document.querySelector(".initial-list")
+ initialShow.textContent = initialInput
  initialsDiv.appendChild(addUserInitials);
  document.body.append(initialsDiv)
 }
 
 // Back Button
 function back () {
-  console.log(back, "hihi") 
-  window.location.replace("file:///Users/Sophie/Desktop/projects/challenges/code-quiz/index.html")
+  console.log("hihi") 
+  // window.location.replace("https://www.w3schools.com")
    
   }
  
@@ -193,49 +215,7 @@ function back () {
 
 
 
-
-
-
-
-// crate array for high scores
-// var highscores = [];
-
-// var highScoresHandler = function(event){
-
-// }
-
-
-
-// backBtn.addEventListener("click", startQuiz); // change to start card
-// // Takes user to homepage
-// function startQuiz(){ // change to start card
-
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function clearStatusClass() {
-//   element.classList.remove("correct")
-//   element.classList.remove("wrong")
-// }
-
+// Timer
 // function timer(){
 //     var timeClock = setInterval(() => {
 //         time = time - 1
