@@ -1,20 +1,16 @@
-var startBtn = document.querySelector("#start")
-var backBtn = document.querySelector("#back")
-var startCard = document.querySelector("#start-card")
-var questionCard = document.querySelector("#question-card")
-var questionElement = document.querySelector("#question")
-var answerButtonsElement = document.querySelector("#answer-buttons")
-var finalCard = document.querySelector("#final-card")
-var scoreCard = document.querySelector("#score-card")
-var submitBtn=document.querySelector(".submit-btn")
-// var timeCount = document.querySelector(".timer .timer-sec")
-var timeCount = document.querySelector("#time")
-var time = 100
-var score= 0
-let currentQuestionIndex 
+/* -------------------------------- Variables ------------------------------- */
+let startBtn = document.querySelector("#start")
+let startCard = document.querySelector("#start-card")
+let questionCard = document.querySelector("#question-card")
+let questionElement = document.querySelector("#question")
+let answerButtonsElement = document.querySelector("#answer-buttons")
+let submitBtn=document.querySelector("#submit-btn")
+let finalCard = document.querySelector("#final-card")
 
-// Quiz Questions & Answers
-var questions = [
+
+
+let currentQuestionIndex 
+let questions = [
     {
       question: "How can you add more than one class to an HTML element?",
       answers: [
@@ -59,65 +55,31 @@ var questions = [
         { text:"4. To provide context for the image", correct: true }
       ]}];
 
-// Event Listeners
+/* ------------------------------- Start Quiz ------------------------------- */
 startBtn.addEventListener("click", startQuiz);
-// backBtn.addEventListener("click", back);
-
-// Start quiz
 function startQuiz(){
  currentQuestionIndex = 0
  startCard.style.display = "none"
  questionCard.style.display = "block"
-  setNextQuestion()
+ setNextQuestion()
 }
 
-  // startBtn.onclick = (event)=>{
-  //   event.preventDefault()
-  //   // queCounter(1);
-  //   // startTimer(time);
-  //   console.log("hello")
-  //   startQuiz()
-  // }
+/* ----------------------------- Next Question ---------------------------- */
 
-
-// startBtn.onclick = ()=>{
-//   // queCounter(1);
-//   startTimer(time);
-//   console.log("hello")
-//   startQuiz()
-// }
-
-// Timer
-// function startTimer(time){
-//   counter = setInterval(timer, 1000);
-//   timeCount.textContent = time;
-  
-// }
-
-// function timer(){
-  
-//   time--;
-// }
-
-console.log(startTimer, "hi")
-// Next Question
 function setNextQuestion() {
-
-// If all questions have been answered, end the quiz
   if (currentQuestionIndex >= questions.length){
   endQuiz()
   }
-// Otherwise keep displaying questions
   else {
    resetState()
    showQuestion(questions[currentQuestionIndex])}
 }
 
-// Display Question Card
+/* -------------------------- Display Question Card ------------------------- */
 function showQuestion(question) {
   questionElement.innerText = question.question
   question.answers.forEach(answer => {
-  var button = document.createElement("button")
+  let button = document.createElement("button")
   button.innerText = answer.text
   button.classList.add("btn")
   if (answer.correct) {
@@ -128,30 +90,25 @@ function showQuestion(question) {
   console.dir(button)
 })}
 
-// Reset Question Card
 function resetState() {
   while (answerButtonsElement.firstChild) {
     answerButtonsElement.removeChild(answerButtonsElement.firstChild)
   }}
 
-// Select Answers
+/* ----------------------------- Select Answers ----------------------------- */
 function selectAnswer(event){ 
- var selectedButton = event.target
-
-// If User Selects The Correct Answer
+ let selectedButton = event.target
+ /* --------------------------------- Correct -------------------------------- */
  if (selectedButton.dataset.correct) { console.log("correct")
- var correct = document.createElement("p")
+ let correct = document.createElement("p")
  correct.textContent = "correct"
  answerButtonsElement.appendChild(correct)
-
  currentQuestionIndex++ 
- console.log(currentQuestionIndex)
  setNextQuestion()
 }
-
-// If User Selects The Incorrect Answer
+/* -------------------------------- Incorrect ------------------------------- */
 else {
- var correct = document.createElement("p")
+ let correct = document.createElement("p")
  correct.textContent = "Wrong!"
  console.log(answerButtonsElement)
 
@@ -160,64 +117,43 @@ if (answerButtonsElement.lastElementChild.textContent !== "Wrong!") {
   answerButtonsElement.appendChild(correct)
 }}}
 
-// End Quiz 
+/* -------------------------------- End Quiz -------------------------------- */
 function endQuiz() {
   questionCard.style.display = "none"
   finalCard.style.display = "block"
   submitBtn.addEventListener("click", addInitials);
 }
 
-// submitBtn.onclick = () => {
-//   addInitials()
-//   console.log("sophia")
-// }
-
-// Add Initials
+/* ------------------------------ Add Initials ------------------------------ */
 function addInitials(event){
  event.preventDefault()
- localStorage.setItem("initials-item", "initialInput")
- window.location.replace("highscores.html"); 
- console.log("hi")
-//  highScores()
+ window.location.replace("highscores.html");
+ localStorage.setItem("initials-item", "initialInput");
+ 
+ highScores()
 }
 
-// High Score Page 
+/* ----------------------------- High Scores Page ---------------------------- */
 function highScores() {
-  console.log("hey")
-//  var initialsItemValue = localStorage.getItem("initialsInput")
- 
-//  var initialsDiv = document.createElement("div");
-//  initialsDiv.classList.add("initials")
+ let initialsItemValue = localStorage.getItem("initials-item"); 
+ console.log(initialsItemValue)
 
-//  var initialText= document.querySelector("#initialText")
-//  var initialInput = initialText.value
-//  console.log(initialInput)
+ let initialsDiv = document.createElement("div");
+ initialsDiv.classList.add("initials");
 
-//  var addUserInitials = document.createElement("li");
-//  addUserInitials.innerText = initialInput
-//  addUserInitials.classList.add("initials-item")
+ let initialText= document.querySelector("#initialText");
+ let initialInput = initialText.value
+ console.log(initialInput)
 
- var initialShow = document.querySelector(".initial-list")
- initialShow.textContent = initialInput
+ let addUserInitials = document.createElement("li");
+ addUserInitials.innerText = initialInput;
+ addUserInitials.classList.add("initials-item");
+
  initialsDiv.appendChild(addUserInitials);
- document.body.append(initialsDiv)
+ document.body.append(initialsDiv);
+
+//  let initialShow = document.querySelector(".initial-list");
+//  initialShow.textContent = initialInput
+//  initialsDiv.appendChild(addUserInitials);
+//  document.body.append(initialsDiv);
 }
-
-// Back Button
-function back () {
-  console.log("hihi") 
-  // window.location.replace("https://www.w3schools.com")
-   
-  }
- 
-// Clear High Scores Button
-
-
-
-
-// Timer
-// function timer(){
-//     var timeClock = setInterval(() => {
-//         time = time - 1
-//     }, 1000 );
-// }
