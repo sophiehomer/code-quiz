@@ -22,13 +22,13 @@ border: none;
 }
 
 header h2{
-    font-size: 20px;
-    display: inline-block;
-    margin-bottom: 60px;
+font-size: 20px;
+display: inline-block;
+margin-bottom: 60px;
 }
 
 #question {
-    font-size: 20px;
+font-size: 20px;
 }
 
 #start-card {
@@ -51,13 +51,13 @@ border:none
 }
 
 #start:hover {
-    background-color: violet;
-    color: white;
-    border: none;
+background-color: violet;
+color: white;
+border: none;
 }
 
 #answer-buttons {
-    margin-top: 40px;
+margin-top: 40px;
 }
 
 .btn {
@@ -73,18 +73,18 @@ border-radius: 5px
 }
 
 .btn:hover {
-    background-color: violet;
-    color: white;
-    border: none
+background-color: violet;
+color: white;
+border: none
 }
 
 #final-card {
-    padding: 100px;
-    display: none;
+padding: 100px;
+display: none;
 }
 
 form {
-    margin-top: 70px;
+margin-top: 70px;
 }
 
 .initials-item {
@@ -105,25 +105,25 @@ border-radius: 5px
 }
 
 #submit-btn:hover {
-    background-color: violet;
-    color: white;
-    border: none
+background-color: violet;    
+color: white;
+border: none
 }
 
 #score-btn, #back {
-    margin-top: 10px;
-    margin-bottom:10px;
-    margin-left: 10px;
-    color: white;
-    background-color: darkblue;
-    border: none;
-    border-radius: 5px;
+margin-top: 10px;
+margin-bottom:10px;
+margin-left: 10px;
+color: white;
+background-color: darkblue;
+border: none;
+border-radius: 5px;
 }
 
 #score-btn:hover, #back:hover {
-    background-color: violet;
-    color: white;
-    border: none
+background-color: violet;
+color: white;
+border: none
 }
 
 /* #score-card {

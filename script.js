@@ -6,6 +6,7 @@ let questionElement = document.querySelector("#question")
 let answerButtonsElement = document.querySelector("#answer-buttons")
 let submitBtn=document.querySelector("#submit-btn")
 let finalCard = document.querySelector("#final-card")
+let time = 100
 
 
 
@@ -56,6 +57,8 @@ let questions = [
       ]}];
 
 /* ------------------------------- Start Quiz ------------------------------- */
+
+
 startBtn.addEventListener("click", startQuiz);
 function startQuiz(){
  currentQuestionIndex = 0
@@ -63,6 +66,22 @@ function startQuiz(){
  questionCard.style.display = "block"
  setNextQuestion()
 }
+/* ---------------------------------- Timer --------------------------------- */
+
+  // $("#start-quiz").on("click", () => {
+  //   var timeInterval = setInterval(function() {
+  //     console.log(timeInterval, "hi")
+  //     if (time === 0) {
+  //       $("#display-time").text(time);
+  //       clearInterval(timeInterval);
+  //     } else {
+  //       $("#display-time").text(time);
+  //       console.log(display-time)
+  //       time--;
+  //     }
+  //   }, 1000);
+  // });
+
 
 /* ----------------------------- Next Question ---------------------------- */
 
@@ -98,7 +117,7 @@ function resetState() {
 /* ----------------------------- Select Answers ----------------------------- */
 function selectAnswer(event){ 
  let selectedButton = event.target
- /* --------------------------------- Correct -------------------------------- */
+ /* --------------------------------- Correct Answer -------------------------------- */
  if (selectedButton.dataset.correct) { console.log("correct")
  let correct = document.createElement("p")
  correct.textContent = "correct"
@@ -106,7 +125,7 @@ function selectAnswer(event){
  currentQuestionIndex++ 
  setNextQuestion()
 }
-/* -------------------------------- Incorrect ------------------------------- */
+/* -------------------------------- Incorrect Answer ------------------------------- */
 else {
  let correct = document.createElement("p")
  correct.textContent = "Wrong!"
