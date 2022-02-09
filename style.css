@@ -1,6 +1,4 @@
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
 }
 
@@ -130,3 +128,10 @@ border: none
     display: none;
 } */
 
+#initialText {
+  list-style: none;
+}
+
+.initials-item {
+  list-style: none;
+}
