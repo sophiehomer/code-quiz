@@ -7,20 +7,24 @@ function highScores() {
     initialsDiv.classList.add("initials");
    
     let initialText= document.querySelector("#initialText");
-    console.log(initialText)
+    // console.log(initialText)
     let initialInput = initialText.value
     
    
     let addUserInitials = document.createElement("li");
     addUserInitials.innerText = initialInput;
     addUserInitials.classList.add("initials-item");
+   document.body.append(initialsItemValue)
+
+
+
+
+    // initialsDiv.appendChild(addUserInitials);
+    // document.body.append(initialsDiv);
    
-    initialsDiv.appendChild(addUserInitials);
-    document.body.append(initialsDiv);
-   
-     // let initialShow = document.querySelector(".initial-list");
-     // initialShow.textContent = initialInput
-     // initialsDiv.appendChild(addUserInitials)
+    //  let initialShow = document.querySelector(".initial-list");
+    //  initialShow.textContent = initialInput
+    //  initialsDiv.appendChild(addUserInitials)
     // document.body.append(initialsDiv);
    }
    highScores()

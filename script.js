@@ -118,6 +118,7 @@ else {
  let correct = document.createElement("p")
  correct.textContent = "Wrong!"
  console.log(answerButtonsElement)
+ time=time -10
 
 console.log(answerButtonsElement.lastElementChild.textContent)
 if (answerButtonsElement.lastElementChild.textContent !== "Wrong!") {
