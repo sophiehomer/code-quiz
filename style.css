@@ -130,6 +130,7 @@ border: none
 
 #initialText {
   list-style: none;
+  display: flex;
 }
 
 .initials-item {

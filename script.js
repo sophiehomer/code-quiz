@@ -7,6 +7,7 @@ let answerButtonsElement = document.querySelector("#answer-buttons")
 let submitBtn=document.querySelector("#submit-btn")
 let finalCard = document.querySelector("#final-card")
 let time = 100
+let finalScore = document.querySelector("#display-time")
 let initialText = document.querySelector("#initialText")
 
 
@@ -62,7 +63,7 @@ function startQuiz(){
  timeInterval = setInterval(function() {
   if (time === 0) {
     $("#display-time").text(time);
-    // clearInterval(timeInterval);
+    clearInterval(timeInterval);
    endQuiz()
   } else {
     $("#display-time").text(time);
@@ -126,22 +127,26 @@ if (answerButtonsElement.lastElementChild.textContent !== "Wrong!") {
 }}}
 
 /* -------------------------------- End Quiz -------------------------------- */
+// let score = time
 function endQuiz() {
   clearInterval(timeInterval)
   questionCard.style.display = "none"
   finalCard.style.display = "block"
   submitBtn.addEventListener("click", addInitials);
+  console.log(finalScore)
 }
+
 
 /* ------------------------------ Add Initials ------------------------------ */
 function addInitials(event){
  event.preventDefault()
  let object = {
-   initials: initialText.value
-  //  score: scoreText.value
+  initials: initialText.value,
+  score: scoreText.value
  }
- localStorage.setItem("initials-item", initialText.value);
  
- window.location.href = "highscores.html"
+ localStorage.setItem("initials-item", initialText.value);
+ localStorage.setItem("display-time", finalScore.value)
+window.location.href = "highscores.html"
 }
 
