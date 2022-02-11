@@ -14,7 +14,7 @@ function highScores() {
     let addUserInitials = document.createElement("li");
     addUserInitials.innerText = initialInput;
     addUserInitials.classList.add("initials-item");
-    document.body.append(initialsItemValue)
+    document.body.append(initialsItemValue, finalScoreInnerText)
 
 
 }

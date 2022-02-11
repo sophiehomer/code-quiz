@@ -127,13 +127,16 @@ if (answerButtonsElement.lastElementChild.textContent !== "Wrong!") {
 }}}
 
 /* -------------------------------- End Quiz -------------------------------- */
+let finalScoreInnerText;
 function endQuiz() {
   clearInterval(timeInterval)
   questionCard.style.display = "none"
   finalCard.style.display = "block"
-  // finalScore.textContent = "Your Final Score is: " + finalScore;
-  submitBtn.addEventListener("click", addInitials);
+
+  document.body.append(finalScore)
   console.log(finalScore)
+
+  submitBtn.addEventListener("click", addInitials);
 }
 
 /* ------------------------------ Add Initials ------------------------------ */
@@ -146,6 +149,6 @@ function addInitials(event){
  
  localStorage.setItem("initials-item", initialText.value);
  localStorage.setItem("display-time", finalScore.innerText);
-window.location.href = "highscores.html"
+ window.location.href = "highscores.html"
 }
 
