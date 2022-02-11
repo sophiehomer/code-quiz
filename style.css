@@ -124,10 +124,6 @@ color: white;
 border: none
 }
 
-/* #score-card {
-    display: none;
-} */
-
 #initialText {
   list-style: none;
   display: flex;
@@ -135,4 +131,8 @@ border: none
 
 .initials-item {
   list-style: none;
+}
+
+.initials {
+  background-color: violet;
 }

@@ -133,7 +133,8 @@ function endQuiz() {
   questionCard.style.display = "none"
   finalCard.style.display = "block"
 
-  document.body.append(finalScore)
+  //document.body.append(finalScore)
+  $("#scoreText").append(finalScore)
   console.log(finalScore)
 
   submitBtn.addEventListener("click", addInitials);
