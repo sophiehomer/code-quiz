@@ -127,26 +127,25 @@ if (answerButtonsElement.lastElementChild.textContent !== "Wrong!") {
 }}}
 
 /* -------------------------------- End Quiz -------------------------------- */
-// let score = time
 function endQuiz() {
   clearInterval(timeInterval)
   questionCard.style.display = "none"
   finalCard.style.display = "block"
+  // finalScore.textContent = "Your Final Score is: " + finalScore;
   submitBtn.addEventListener("click", addInitials);
   console.log(finalScore)
 }
-
 
 /* ------------------------------ Add Initials ------------------------------ */
 function addInitials(event){
  event.preventDefault()
  let object = {
   initials: initialText.value,
-  score: scoreText.value
+  score: finalScore.innerText
  }
  
  localStorage.setItem("initials-item", initialText.value);
- localStorage.setItem("display-time", finalScore.value)
+ localStorage.setItem("display-time", finalScore.innerText);
 window.location.href = "highscores.html"
 }
 
